@@ -21,4 +21,5 @@ int main()
     print_tokens("it was the night of october 17th. pi was still 3.14...");
     print_tokens("1,123,456,789.10 xx");
     print_tokens("12,345 123,1.0 123,1 234,345.000,00,0,34,123");
+    print_tokens("123 xx");
 }

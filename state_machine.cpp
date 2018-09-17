@@ -37,9 +37,9 @@ void sm::STokenizer::make_table(){
     mark_table(1, 3, DEC, 11);
     mark_table(4,4,DEC,12); //double with commas (NVM, don't do commas in decimals)
     mark_table(8,8,DEC,12);
-    mark_table(13,13,NUMS,14);
-    mark_table(14,14,NUMS,15);
-    mark_table(15,15,NUMS,16);
+//    mark_table(13,13,NUMS,14); //DOUBLES WITH COMMAS??
+//    mark_table(14,14,NUMS,15);
+//    mark_table(15,15,NUMS,16);
     mark_table(16,16,COMMAS,13);
     mark_table(10,10, DEC, 11);
     mark_table(11, 12, NUMS, 12); //double: w or w/out commas
@@ -152,7 +152,7 @@ sm::SToken& sm::STokenizer::next_token(){
     string temp_s;
     this->get_token();
     temp_s = input.substr(start_pos, \
-                          (success_pos<input.length())?(success_pos-start_pos) : 1);
+                          (success_pos<input.length())?(success_pos-start_pos) : (input.length()-start_pos));
     SToken* token_ptr = new SToken(temp_s, success_state);
     if(DEBUG){
         cout << "tkn ptr: ";

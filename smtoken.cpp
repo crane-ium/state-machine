@@ -40,20 +40,18 @@ sm::SToken& sm::SToken::operator =(const SToken& rhs){
 }
 
 void sm::SToken::set_state_names(){
-    if(already_set_state_names)
+    if(already_set_state_names) //avoid repeat filling a static var
         return;
     for(int i = 0; i < MAX_ROWS; i++)
         snames[i] = "UNKNOWN";
-    for(int n = 0; n < sizeof(WORD)/sizeof(*WORD); n++)
-        snames[WORD[n]] = "ALPHA";
-    for(int n = 0; n < sizeof(INT)/sizeof(*INT); n++)
-        snames[INT[n]] = "INTEGER";
-    for(int n = 0; n < sizeof(DOUBLE)/sizeof(*DOUBLE); n++)
-        snames[DOUBLE[n]] = "DOUBLE";
-    for(int n = 0; n < sizeof(SPACE)/sizeof(*SPACE); n++)
-        snames[SPACE[n]] = "SPACE";
-    for(int n = 0; n < sizeof(COMMA)/sizeof(*COMMA); n++)
-        snames[COMMA[n]] = "COMMA";
+    //Takes a var[] and loops through it while adding in str into a respective array
+    //This keeps track of success state names
+#define s_loop(var, str) for(unsigned int n=0; n<sizeof(var)/sizeof(*var); n++) snames[var[n]] = str
+    s_loop(WORD,"ALPHA");
+    s_loop(INT,"INTEGER");
+    s_loop(DOUBLE,"DOUBLE");
+    s_loop(SPACE,"SPACE");
+    s_loop(COMMA,"COMMA");
 
     already_set_state_names = true;
 }
