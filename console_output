@@ -1,27 +1,97 @@
-ALPHA         |it|
-SPACE         | |
-ALPHA         |was|
-SPACE         | |
-ALPHA         |the|
-SPACE         | |
-ALPHA         |night|
-SPACE         | |
-ALPHA         |of|
-SPACE         | |
-ALPHA         |october|
-SPACE         | |
-INTEGER         |17|
-ALPHA         |th|
-UNKNOWN         |.|
-SPACE         | |
-ALPHA         |pi|
-SPACE         | |
-ALPHA         |was|
-SPACE         | |
-ALPHA         |still|
-SPACE         | |
-DOUBLE         |3.14|
-UNKNOWN         |.|
+String:
+Done
+
+String: &
+ UNKNOWN         |&|
+Done
+
+String: <>|~
+ UNKNOWN         |<|
+ UNKNOWN         |>|
+ UNKNOWN         |||
+ UNKNOWN         |~|
+Done
+
+String: 1
+ INTEGER         |1|
+Done
+
+String: -3.1415926
+  DOUBLE         |-3.1415926|
+Done
+
+String: 12,345,6789.0.5
+ INTEGER         |12|
+   PUNCS         |,|
+ INTEGER         |345,678|
+  DOUBLE         |9.0|
+   PUNCS         |.|
+ INTEGER         |5|
+Done
+
+String: 123:50:59, 80:61 12:16am 00:00pm 1:32 1:70pm 13:00 12:12
+ INTEGER         |12|
+    TIME         |3:50|
+ UNKNOWN         |:|
+ INTEGER         |59|
+   PUNCS         |,|
+   SPACE         | |
+ INTEGER         |80|
+ UNKNOWN         |:|
+ INTEGER         |61|
+   SPACE         | |
+    TIME         |12:16am|
+   SPACE         | |
+    TIME         |00:00pm|
+   SPACE         | |
+    TIME         |1:32|
+   SPACE         | |
+ INTEGER         |1|
+ UNKNOWN         |:|
+ INTEGER         |70|
+   ALPHA         |pm|
+   SPACE         | |
+    TIME         |13:00|
+   SPACE         | |
+    TIME         |12:12|
+Done
+
+String: End of test!
+   ALPHA         |End|
+   SPACE         | |
+   ALPHA         |of|
+   SPACE         | |
+   ALPHA         |test|
+   PUNCS         |!|
+Done
+
+   ALPHA         |it|
+   SPACE         | |
+   ALPHA         |was|
+   SPACE         | |
+   ALPHA         |the|
+   SPACE         | |
+   ALPHA         |night|
+   SPACE         | |
+   ALPHA         |of|
+   SPACE         | |
+   ALPHA         |october|
+   SPACE         | |
+ INTEGER         |17|
+   ALPHA         |th|
+   PUNCS         |.|
+   SPACE         | |
+   ALPHA         |pi|
+   SPACE         | |
+   ALPHA         |was|
+   SPACE         | |
+   ALPHA         |still|
+   SPACE         | |
+  DOUBLE         |3.14|
+   SPACE         | |
+   ALPHA         |at|
+   SPACE         | |
+    TIME         |12:24|
 Done!
 
 Press <RETURN> to close this window...

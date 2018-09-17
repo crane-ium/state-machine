@@ -44,13 +44,16 @@ namespace sm{
         void set_success_states(); //uses mark_table() functoins to fill in a state machine table
         void st_reset(); //resets variables to accept a new string
         //mark_table: fills in set rows/columns with a current state based on requirements
-        void mark_table(const int row, int start, int end, int state);
+        void mark_table(int row, int start, int end, int state);
         void mark_table(int start_row, int end_row, int start, int end, int state);
         void mark_table(int start_row, int end_row, const string& s, int state);
         Queue<SToken>& make_queue(); //deletes old queue and makes a new queue
         //get_state: returns a state in (row, column) of the table
         int get_state(int row, int column) const;
     };
+
+    //STATE MACHINE FUNCTIONS
+    void print_tokens(const char c[]); //creates tokenizer and stoken and does the whole iteration
 }
 
 #endif // STATE_MACHINE_H

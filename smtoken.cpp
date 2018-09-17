@@ -4,7 +4,7 @@ string sm::SToken::snames[MAX_ROWS];
 bool sm::SToken::already_set_state_names = false;
 
 sm::SToken::SToken(){
-    _s = "~test~";
+    _s = "";
     state = -1;
     set_state_names();
 }
@@ -52,6 +52,8 @@ void sm::SToken::set_state_names(){
     s_loop(DOUBLE,"DOUBLE");
     s_loop(SPACE,"SPACE");
     s_loop(COMMA,"COMMA");
+    s_loop(TIME, "TIME");
+    s_loop(PUNC, "PUNCS");
 
     already_set_state_names = true;
 }

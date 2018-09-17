@@ -5,9 +5,9 @@ Bugs:
 [FIXED]Sometimes ignores alpha type tokens at the end of strings
 
 Issues:
-The console-output copy did not include the field width spacing
-It seems unoptimized and the code is messier than I would like
+I think if i were to rewrite it completely it COULD be slightly neater
 Would rather use vectors for the table
 I think i did certain features differently than the 'client' described them
--Only because i made them better
+-Only because i made them better ;)
 I should have better try-catch and asserts in my program
+The state-machine becomes exponentially hard to manually manage when growing

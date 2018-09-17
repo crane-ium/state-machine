@@ -1,8 +1,8 @@
 
 #include <iostream>
 #include <vector>
-#include "sm_table_generator.h"
 #include "../../CS8/snq/my_queue.h"
+#include "sm_table_generator.h"
 
 using namespace std;
 
