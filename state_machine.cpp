@@ -23,22 +23,36 @@ sm::STokenizer::STokenizer(const string& s): STokenizer(){
 void sm::STokenizer::make_table(){
     mark_table(0, MAX_ROWS-1, 1, MAX_COLUMNS-1, -1); //set all to -1 besides first column
     set_success_states();
-    //RULES FOR NUMS
-    mark_table(0, 0, NEG, 4);
-    mark_table(0, 1, DEC, 2);
-    mark_table(4, 4, DEC, 2);
-    mark_table(0, 1, NUMS, 1);
-    mark_table(2, 3, NUMS, 3);
-    mark_table(4, 4, NUMS, 1);
+    //RULES FOR NUMS, including commas
+    mark_table(0, 0, NEG, 10);
+    mark_table(0, 0, NUMS, 1);
+    mark_table(1,1,NUMS,2);
+    mark_table(2,2,NUMS,3); //either expect comma after or no comma
+    mark_table(3,4,NUMS,4); //no longer expect commas
+    mark_table(1,3,COMMAS,5); //int with commas
+    for(int i = 5; i != 8; i++)
+        mark_table(i,i,NUMS,i+1);
+    mark_table(8,8,COMMAS,5);
+    mark_table(0, 0, DEC, 11);
+    mark_table(1, 3, DEC, 11);
+    mark_table(4,4,DEC,12); //double with commas (NVM, don't do commas in decimals)
+    mark_table(8,8,DEC,12);
+    mark_table(13,13,NUMS,14);
+    mark_table(14,14,NUMS,15);
+    mark_table(15,15,NUMS,16);
+    mark_table(16,16,COMMAS,13);
+    mark_table(10,10, DEC, 11);
+    mark_table(11, 12, NUMS, 12); //double: w or w/out commas
+    mark_table(10,10, NUMS, 1);
     //RULES FOR CHARS
-    mark_table(0, 0, CHARS, 10);
-    mark_table(10, 10, CHARS, 10);
+    mark_table(0, 0, CHARS, 20);
+    mark_table(20, 20, CHARS, 20);
     //RULES FOR SPACES
-    mark_table(0, 0, SPACES, 5);
-    mark_table(5, 5, SPACES, 5);
+    mark_table(0, 0, SPACES, 27);
+    mark_table(27,27, SPACES, 27);
     //RULES FOR SPECIFIC PUNCTUATION
-    mark_table(0, 0, COMMAS, 6);
-    mark_table(6,6, ' ', 6);
+    mark_table(0, 0, COMMAS, 28);
+    mark_table(28,28, ' ', 29); //a comma for punctuation
 }
 
 void sm::STokenizer::mark_table(int row, int start, int end, int state){
@@ -129,9 +143,9 @@ void sm::STokenizer::set_success_states(){
     //my explanation: ptrs don't have size, so sizeof(SSTATE) returns allocated memory for it
     //and sizeof(*SSTATE) returns allocated bytes for *SSTATE, which is independent of type
     int length = sizeof(SSTATE)/sizeof(*SSTATE);
-    for(int i = 0; i < length; i++){
-        _table[SSTATE[i]][0] = 1;
-    }
+    const int* i;
+    for(i = *SSTATE; *i != -1; i++)
+        _table[*i][0] = 1;
 }
 
 sm::SToken& sm::STokenizer::next_token(){

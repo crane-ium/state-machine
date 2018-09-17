@@ -51,7 +51,6 @@ namespace sm{
         //get_state: returns a state in (row, column) of the table
         int get_state(int row, int column) const;
     };
-
 }
 
 #endif // STATE_MACHINE_H

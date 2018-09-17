@@ -1,0 +1,13 @@
+Version: Barkeshli
+Note: I am using git for version control so this is the branch for my class submission
+
+Bugs:
+Sometimes ignores alpha type tokens at the end of strings
+
+Issues:
+The console-output copy did not include the field width spacing
+It seems unoptimized and the code is messier than I would like
+Would rather use vectors for the table
+I think i did certain features differently than the 'client' described them
+-Only because i made them better
+I should have better try-catch and asserts in my program
